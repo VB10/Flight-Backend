@@ -1,4 +1,6 @@
-const express = require("express");
+const functions = require('firebase-functions');
+
+const express          = require("express");
 const app              = express();
 const port             = 3000;
 const { district }     = require("./middleware/middleware");
@@ -18,4 +20,6 @@ app.get("/api/flight", (req, res) =>
     }
   })
 );
-app.listen(port, () => {});
+// app.listen(port, () => {});
+
+exports.app = functions.https.onRequest(app);
